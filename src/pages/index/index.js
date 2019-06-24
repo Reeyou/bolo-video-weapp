@@ -22,9 +22,9 @@ import './index.styl'
 }))
 class Index extends Component {
 
-    config = {
-    navigationBarTitleText: '首页'
-  }
+  //   config = {
+  //   navigationBarTitleText: '首页'
+  // }
 
   componentWillReceiveProps (nextProps) {
     console.log(this.props, nextProps)

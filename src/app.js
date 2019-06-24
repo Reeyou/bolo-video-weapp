@@ -20,12 +20,14 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/login/index',
       'pages/index/index'
+      
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
+      navigationBarTitleText: 'bolo 短视频',
       navigationBarTextStyle: 'black'
     }
   }
