@@ -1,4 +1,7 @@
 const config = {
+  h5: {
+    esnextModules: ['taro-ui']
+  },
   projectName: 'shortvideo',
   date: '2019-6-24',
   designWidth: 750,
