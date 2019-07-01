@@ -6,7 +6,7 @@ import './index.styl'
 class Register extends Component {
 
    config = {
-       navigationBarTitleText: ''
+       navigationBarTitleText: '注册'
   }
 
   state={}
@@ -20,8 +20,24 @@ class Register extends Component {
       username: formValue.name,
       password: formValue.password
     }
-    console.log(params)
-    register(params).then()
+    Taro.showLoading({
+      title: '加载中'
+    })
+    register(params).then(res => {
+      Taro.hideLoading()
+      Taro.showToast({
+        title: '注册成功',
+        duration: 2000
+      })
+      // console.log(res)
+      // if(res.code == 200) {
+      //   Taro.hideLoading()
+      //   Taro.showToast({
+      //     title: '注册成功',
+      //     duration: 2000
+      //   })
+      // }
+    })
   }
   render() {
     return (
