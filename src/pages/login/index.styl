@@ -68,13 +68,13 @@
     left: 0
 .registerForm,
 .loginForm
+  width: 60%;
+  margin: 0 auto
   font-size: 14Px
   .form
+    width: 100%;
     .formItem
-      width: 60%;
-      margin: 0 auto
-      // text-align: center
-      // border-bottom: 1px solid #575757
+      width: 100%;
       Text
         font-size: 20Px
       .label, input
@@ -84,21 +84,31 @@
         font-size: 16Px
         width: 180px
       .input
+        box-sizing: border-box;
+        width: 100%;
+        height: 74px;
         text-align: left
-        padding: 10px 40px 20px 60px
+        padding: 4px 0 4px 40px;
         border-radius: 20px
         background: #fff
         // color: #fff
         &:placeholder
-          font-size: 18Px
+          font-size: 14Px
           color: #fff
           
     .login,
     .register 
-      width: 60%
+      width: 100%
       background:rgba(42,175,266,0.74);
       margin-top: 40px
       padding-right: 20px
     .item
       margin-top: 40px
-
+    .tips
+      float: right
+      font-size: 26px
+      margin-top: 20px
+      Text
+        color: #fff
+        margin-left: 14px
+        font-size: 26px

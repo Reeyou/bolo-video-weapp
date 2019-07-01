@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Button, Image } from '@tarojs/components';
-import banner from '../../resource/images/banner.jpg'
+import banner from '../../resource/images/banner_night.jpg'
 import Register from './register'
 import Login from './login'
 import './index.styl'
