@@ -30,6 +30,14 @@ class Index extends Component {
       loginVisble: false
     })
   }
+
+  // 
+  changeState(val) {
+    this.setState({
+      loginVisble: val.loginVisble,
+      registerVisble: val.registerVisble
+    })
+  }
   render() {
     return (
       <View>
@@ -61,10 +69,10 @@ class Index extends Component {
           </View>
           <View className='con'>
             {
-              this.state.loginVisble ? <Login /> : ''
+              this.state.loginVisble ? <Login setState={this.changeState.bind(this)}/> : ''
             }
             {
-              this.state.registerVisble ? <Register /> : ''
+              this.state.registerVisble ? <Register setState={this.changeState.bind(this)}/> : ''
             }
           </View>
         </View>

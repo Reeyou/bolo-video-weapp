@@ -3,41 +3,53 @@ import { View, Text , Button, Form, Input} from '@tarojs/components';
 import {register} from '../../service/login'
 import './index.styl'
 
+let timer = null
 class Register extends Component {
-
-   config = {
-       navigationBarTitleText: '注册'
+  constructor(props) {
+    super(props)
   }
 
-  state={}
+  componentWillUnmount() {
+    clearTimeout(timer)
+  }
 
-  componentWillMount () {}
 
+  toLogin = () => {
+    this.props.setState({loginVisble: true, registerVisble: false})
+  }
 
   handleRegister = (e) => {
-    const formValue = e.target.value
+    const username = e.target.value.name
+    const password = e.target.value.password
     const params = {
-      username: formValue.name,
-      password: formValue.password
+      username: username,
+      password: password
     }
-    Taro.showLoading({
-      title: '加载中'
-    })
-    register(params).then(res => {
-      Taro.hideLoading()
+    if(username.length == 0 || password.length == 0) {
       Taro.showToast({
-        title: '注册成功',
+        title: "用户名或密码不能为空",
+        icon: 'none',
         duration: 2000
       })
-      // console.log(res)
-      // if(res.code == 200) {
-      //   Taro.hideLoading()
-      //   Taro.showToast({
-      //     title: '注册成功',
-      //     duration: 2000
-      //   })
-      // }
-    })
+    } else {
+      Taro.showLoading({
+        title: '加载中'
+      })
+      register(params).then(res => {
+        Taro.hideLoading()
+        Taro.showToast({
+          title: '注册成功',
+          duration: 2000
+        })
+        if(res.data.code == 200) {
+          timer = setInterval(() => {
+            this.props.setState({loginVisble: true, registerVisble: false})
+          }, 2000)
+        } else {
+
+        }
+      })
+    }
   }
   render() {
     return (
@@ -53,7 +65,7 @@ class Register extends Component {
             <Input className='input' placeholder='请确认密码'/>
           </View>
           <Button type='primary' className='register' form-type='submit'>注册</Button>
-          <View className='tips'>已有账号,去<Text>登录</Text></View>
+          <View className='tips'>已有账号,去<Text onClick={this.toLogin}>登录</Text></View>
         </Form>
       </View>
     );
