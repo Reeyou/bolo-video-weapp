@@ -1,43 +1,73 @@
 .user {
   .container {
+    width: 100%;
+    text-align: center;
     .info {
+      height: 460px;
+      background: rgba(0,0,0,.06);
+      padding: 40px 0 20px 0;
       .avatar {
-
+        width: 100Px;
+        margin: 0 auto;
+        height: 100Px;
+        border-radius: 50%;
+        background: #000;
       }
       .btn {
-
+        margin: 30px 0;
+        Button {
+          &:last-child {
+            margin-left: 60px;
+          }
+        }
       }
       .followBtn {
-
       }
-      .tab {
+      .count {
+        margin: 30px 0 0 0;
         .info-items {
-
+          font-size: 26px;
+          margin-left: 60px;
+          &:first-child {
+            margin-left: 0;
+          }
         }
       }
     }
-    .mine {
-      .btnTab {
-        .tab {
 
+    .tab {
+      margin: 26px 0;
+      .tablist {
+        font-size: 26px;
+        padding: 14px 40px;
+        &_left {
+          border: 1px solid black;
+          border-right: 0;
         }
-        .active {
-
+        &_mid {
+          border: 1px solid black;
+        }
+        &_right {
+          border: 1px solid black;
+          border-left: 0;
         }
       }
-      .list {
-        .item {
+      .active {
 
-        }
-        .work {
+      }
+    }
+    .list {
+      .item {
 
-        }
-        .like {
+      }
+      .work {
 
-        }
-        .follow {
-          
-        }
+      }
+      .like {
+
+      }
+      .follow {
+        
       }
     }
   }
