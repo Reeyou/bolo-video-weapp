@@ -26,13 +26,15 @@ export default class User extends Component {
         <View className='container'>
           <View className='info'>
             <View className='avatar'></View>
-            <View className='btn'>
+            <View className='upload'>
               <Button size='mini' type='primary'>上传作品</Button>
-              <Button size='mini' type='primary'>注销</Button>
             </View>
-            <View className='followBtn'>
+            <View className='loginout'>
+            <Button size='mini' type='primary'>注销</Button>
+            </View>
+            {/* <View className='followBtn'>
               <Button size='mini' type='primary'>关注我</Button>
-            </View>
+            </View> */}
             <View className='count'>
               <Label class='info-items'>{fansCounts} 粉丝</Label>
               <Label class='info-items'>{followCounts} 关注</Label>
