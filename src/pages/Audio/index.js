@@ -1,6 +1,7 @@
 import Taro , { Component } from '@tarojs/taro';
 import { View, Text , Button, Form, Input} from '@tarojs/components';
 import MyAudio from '../../components/Audio'
+import './index.styl'
 
 export default class Audio extends Component {
 
@@ -61,6 +62,15 @@ export default class Audio extends Component {
             <MyAudio data={item} key={index}></MyAudio>
           ))
         }
+        <view class="inputView">
+          <label class="loginLabel">视频描述：</label>
+          <input name="desc" class="inputText" placeholder="说点什么吧" />
+        </view>
+
+
+        <button class="submitBtn" type="primary" form-type='submit'>上传视频</button>
+        
+        <button class="gobackBtn" type="warn" form-type='reset'>重置</button>
       </View>
     );
   }

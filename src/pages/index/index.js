@@ -1,49 +1,63 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
-import { connect } from '@tarojs/redux'
-
-import { add, minus, asyncAdd } from '../../actions/counter'
-
+import { View, Button, Text, Image } from '@tarojs/components'
+import img from '../../resource/images/banner.jpg'
+import avatar from '../../resource/images/noavatar.png'
 import './index.styl'
 
-
-@connect(({ counter }) => ({
-  counter
-}), (dispatch) => ({
-  add () {
-    dispatch(add())
-  },
-  dec () {
-    dispatch(minus())
-  },
-  asyncAdd () {
-    dispatch(asyncAdd())
-  }
-}))
 class Index extends Component {
 
-  //   config = {
-  //   navigationBarTitleText: '首页'
-  // }
-
-  componentWillReceiveProps (nextProps) {
-    console.log(this.props, nextProps)
+    config = {
+    navigationBarTitleText: '首页'
+  }
+  state = {
+    screenWidth: 375,
+    videoList: [
+      {
+        img: img,
+        avatar: avatar,
+        nickName: 'reeyou',
+        commentCount: 200
+      },
+      {
+        img: img,
+        avatar: avatar,
+        nickName: 'reeyou',
+        commentCount: 100
+      },
+      {
+        img: img,
+        avatar: avatar,
+        nickName: 'reeyou',
+        commentCount: 377 
+      }
+    ]
   }
 
-  componentWillUnmount () { }
 
-  componentDidShow () { }
-
-  componentDidHide () { }
 
   render () {
+    const { screenWidth, videoList } = this.state
     return (
-      <View className='index'>
-        <Button className='add_btn' onClick={this.props.add}>+</Button>
-        <Button className='dec_btn' onClick={this.props.dec}>-</Button>
-        <Button className='dec_btn' onClick={this.props.asyncAdd}>async</Button>
-        <View><Text>{this.props.counter.num}</Text></View>
-        <View><Text>Hello, World</Text></View>
+      <View>
+        {
+          videoList.map(item => (
+            <View className="item-container">  
+              <View style={{width:`${screenWidth}px`, height:'210px', textAlign: 'center'}} className='back-img'> 
+                <Image src={item.img} style={{width: '200px', height:'210px'}}></Image> 
+              </View> 
+              <View className="desc">
+                <View className="faceName">
+                  <Image className='myface' src={item.avatar}></Image>
+                  <View className="nickname">{item.nickName}</View>
+                </View>
+                <View className='comment'>
+                  <Image className='icon' src={avatar}></Image> 
+                  <Text className='commentCount'>{item.commentCount}</Text>
+                </View>
+              </View>
+            </View> 
+          )) 
+        }
       </View>
     )
   }
