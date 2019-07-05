@@ -15,7 +15,6 @@ class Index extends Component {
   }
   // 
   showLogin = () => {
-    console.log('login')
     this.setState({
       loginVisble: true,
       registerVisble: false
@@ -24,7 +23,6 @@ class Index extends Component {
 
   // 
   showRegister = () => {
-    console.log('register')
     this.setState({
       registerVisble: true,
       loginVisble: false

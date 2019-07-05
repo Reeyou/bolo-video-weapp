@@ -46,8 +46,6 @@ export default class Login extends Component {
     }
   }
   render() {
-    console.log(111)
-    console.log(this.props)
     return (
       <View className='loginForm'>
         <Form className='form' onSubmit={this.handleLogin}>

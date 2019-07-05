@@ -1,6 +1,7 @@
 import Taro , { Component } from '@tarojs/taro';
 import { View, Text , Button, Form, Input, Label} from '@tarojs/components';
 import "./index.styl"
+import avatar from '../../resource/images/noavatar.png'
 
 export default class User extends Component {
   constructor(props) {
@@ -18,6 +19,40 @@ export default class User extends Component {
 
   componentWillMount () {}
 
+  uploadAvatar = () => {
+    Taro.chooseImage().then(res => {
+      const params = {
+        avatarPath: res.tempFilePaths[0]
+      }
+    })
+  }
+  uploadVideo = () => {
+    Taro.chooseVideo().then(res => {
+      const params = {
+        duration: res.duration,
+        width: res.width,
+        height: res.height,
+        videoPath: res.tempFilePath,
+        imgPath: res.thumbTempFilePath
+      }
+
+      if(res.duration > 16) { 
+        Taro.showToast({
+          title: "视频长度不能超过15秒...",
+          icon: 'none',
+          duration: 2000
+        })
+      } else if (res.duration < 3) {
+        Taro.showToast({
+          title: "视频长度不能少于3秒...",
+          icon: 'none',
+          duration: 2000
+        })
+      } else {
+
+      }
+    })
+  }
 
   render() {
     const { fansCounts, followCounts, receiveLikeCounts } = this.state
@@ -25,9 +60,9 @@ export default class User extends Component {
       <View className='user'>
         <View className='container'>
           <View className='info'>
-            <View className='avatar'></View>
+            <Image src={avatar} className='avatar' onClick={this.uploadAvatar}></Image>
             <View className='upload'>
-              <Button size='mini' type='primary'>上传作品</Button>
+              <Button size='mini' type='primary' onClick={this.uploadVideo}>上传作品</Button>
             </View>
             <View className='loginout'>
             <Button size='mini' type='primary'>注销</Button>

@@ -1,8 +1,6 @@
 import Taro , { Component } from '@tarojs/taro';
 import { View, Text , Button, Form, Input} from '@tarojs/components';
-import './index.styl'
-import play from '../../resource/images/play.png'
-import pause from '../../resource/images/pause.png'
+import MyAudio from '../../components/Audio'
 
 export default class Audio extends Component {
 
@@ -11,22 +9,58 @@ export default class Audio extends Component {
   }
 
   state={
-    name: '体面',
-    singer: '于文文',
-    duration: '5:30'
+    audioState: false,
+    icon: 'play',
+    data: [
+      {
+        src: "http://www.itzixi.com:88/download/timian.mp3",
+        name: '体面',
+        singer: '于文文',
+        duration: '3:20'
+      },
+      {
+        src: "http://www.itzixi.com:88/download/timian.mp3",
+        name: '倒数',
+        singer: '邓紫棋',
+        duration: '4:30'
+      },
+      {
+        src: "http://www.itzixi.com:88/download/timian.mp3",
+        name: '倒数',
+        singer: '邓紫棋',
+        duration: '4:30'
+      },
+      {
+        name: '倒数',
+        singer: '邓紫棋',
+        duration: '4:30'
+      }
+    ]
   }
+  changeAudio = () => {
+      if(this.state.audioState) {
+        this.setState({
+          audioState: !this.state.audioState,
+          icon: 'pause' 
+        })
+      } else {
+        this.setState({
+          audioState: !this.state.audioState,
+          icon: 'play'
+        })
+      }
+    }
 
 
   render() {
-    const { name, singer, duration } = state
+    const { data, icon } = this.state
     return (
-      <View className='audio'>
-        <Image className='icon'></Image>
-        <View>
-          <View className='name'>{name}</View>
-          <View className='singer'>{singer}</View>
-        </View>
-        <View className='duration'>{duration}</View>
+      <View >
+        {
+          data.map((item, index) => (
+            <MyAudio data={item} key={index}></MyAudio>
+          ))
+        }
       </View>
     );
   }
